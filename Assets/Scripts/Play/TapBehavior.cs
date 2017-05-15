@@ -33,10 +33,10 @@ public class TapBehavior : MonoBehaviour {
     void Detector(Vector2 pos)
     {
         float deltaPos = (float)this.transform.position.y - pos.y; ;
-        Debug.Log(deltaPos.ToString());
+        //Debug.Log(deltaPos.ToString());
         string status = GM.CalculateScore(deltaPos);
         CallParticle(status);
-        Debug.Log(status);
+        //Debug.Log(status);
     }
 
     void Activate(string id)
@@ -44,7 +44,7 @@ public class TapBehavior : MonoBehaviour {
         if(GameObjectId == id)
         {
             isActivated = true;
-            Debug.Log(GameObjectId);
+            //Debug.Log(GameObjectId);
         }
     }
 

@@ -28,28 +28,23 @@ public class BlockBehavior : MonoBehaviour {
         //pos 4.5
         if (this.transform.position.y <= 4 && !isDone)
         {
-            //spawner.Spawn();
             spawner.SpawnActive();
             isDone = true;
         }
-        //if (isHit)
-        //{
-        //    Destroy(this.gameObject);
-        //}
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if(col.gameObject.tag == "Death Line")
+        {
+			EventManager.OnGameOver(true);
+        }
     }
 
     void OnBecameInvisible()
     {
-        //if (!isHit)
-        //{
-        //    GM.isGameOver = true;
-        //}
-        //else
-        //{
-        //Destroy(this.gameObject);
         isDone = false;
         this.gameObject.SetActive(false);
-        //}
     }
 }
 

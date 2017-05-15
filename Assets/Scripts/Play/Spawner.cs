@@ -7,10 +7,24 @@ public class Spawner : MonoBehaviour {
     public GameObject Block;
     public Transform[] spawnPos;
     public float speed;
+	public bool isTutorial;
+	public bool isStopSpawn;
 
     public static Spawner SharedInstance;
     public List<GameObject> pooledObj;
     public int amountToPool;
+
+	public int totalBlock;
+
+    void OnEnable()
+    {
+        EventManager.OnGameOverE += OnGameOver;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnGameOverE -= OnGameOver;
+    }
 
     void Awake()
     {
@@ -20,13 +34,14 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //Spawn();
+		isTutorial = true;
         Initiate();
-        SpawnActive();
+        //SpawnActive();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
+		
 	}
 
     void Initiate()
@@ -38,6 +53,11 @@ public class Spawner : MonoBehaviour {
             obj.SetActive(false);
             pooledObj.Add(obj);
         }
+    }
+
+	void OnGameOver(bool isMiss)
+    {
+        speed = 0;
     }
 
     public GameObject GetPooledObject()
@@ -52,19 +72,28 @@ public class Spawner : MonoBehaviour {
         return null;
     }
 
+	void Finished()
+	{
+		isTutorial = false;
+		SpawnActive ();
+		Debug.Log ("Finished");
+	}
+
     public void SpawnActive()
     {
-        GameObject blok = GetPooledObject();
-        if(blok != null)
-        {
-            blok.transform.position = new Vector3(spawnPos[Random.Range(0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
-            blok.SetActive(true);
-        }
-        else if(blok == null)
-        {
-            GameObject objPlus = (GameObject)Instantiate(Block);
-            objPlus.transform.position = new Vector3(spawnPos[Random.Range(0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
-            pooledObj.Add(objPlus);
-        }
+		if (!isStopSpawn) {
+			GameObject blok = GetPooledObject ();
+			if (blok != null) {
+				blok.transform.position = new Vector3 (spawnPos [Random.Range (0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
+				blok.SetActive (true);
+			} else if (blok == null) {
+				GameObject objPlus = (GameObject)Instantiate (Block);
+				objPlus.transform.position = new Vector3 (spawnPos [Random.Range (0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
+				pooledObj.Add (objPlus);
+			}
+			totalBlock += 1;
+		} else {
+			Debug.Log (isTutorial);
+		}
     }
 }
