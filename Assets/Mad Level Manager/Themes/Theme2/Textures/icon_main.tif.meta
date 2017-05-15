@@ -1,5 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
 guid: a459462c78a7a404c83aaa1d4ca67c37
+=======
+guid: 90f9e998c204e5a4cab30d6ebb121ef3
+timeCreated: 1494822716
+licenseType: Free
+>>>>>>> Stashed changes:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
 TextureImporter:
   fileIDToRecycleName: {}
   serializedVersion: 2
@@ -35,6 +41,10 @@ TextureImporter:
   lightmap: 0
   rGBM: 0
   compressionQuality: 50
+<<<<<<< Updated upstream:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
+=======
+  allowsAlphaSplitting: 0
+>>>>>>> Stashed changes:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
   spriteMode: 0
   spriteExtrude: 1
   spriteMeshType: 1
@@ -43,6 +53,10 @@ TextureImporter:
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spritePixelsToUnits: 100
   alphaIsTransparency: 0
+<<<<<<< Updated upstream:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
+=======
+  spriteTessellationDetail: -1
+>>>>>>> Stashed changes:Assets/Mad Level Manager/Themes/Theme2/Textures/icon_main.tif.meta
   textureType: -1
   buildTargetSettings: []
   spriteSheet:

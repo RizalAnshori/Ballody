@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream
 guid: a8a9ec7eb280f674b9af317dadfd9bf8
 labels:
 - level
@@ -13,6 +14,11 @@ labels:
 - progress
 - save
 - select
+=======
+guid: aa6ff4e7acbde9a4699faa1a718c6bc5
+timeCreated: 1494822646
+licenseType: Free
+>>>>>>> Stashed changes
 DefaultImporter:
   userData: 
   assetBundleName: 

@@ -2,23 +2,8 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Play\GameManager.cs">
     <Files>
-      <File FileName="Assets\Scripts\Database\ResourceManager.cs" Line="109" Column="15" />
-      <File FileName="Assets\Resources\ResourceJSON.json" Line="1" Column="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Editor\Inspectors\MadLevelFreeLayoutInspector.cs" Line="1" Column="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Editor\Inspectors\MadLevelInputControlInspector.cs" Line="1" Column="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Editor\Inspectors\MadLevelGridLayoutInspector.cs" Line="1" Column="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\MadCommons\Editor\MadGUI.cs" Line="738" Column="37" />
-      <File FileName="Assets\Scripts\Play\GameManager.cs" Line="79" Column="32" />
-      <File FileName="Assets\Scripts\Play\Spawner.cs" Line="11" Column="25" />
-      <File FileName="Assets\Scripts\Play\BlockBehavior.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Map\ResourceUI.cs" Line="33" Column="2" NotebookId="1" />
-      <File FileName="Assets\Scripts\Map\CompleteChecker.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Base\Layouts\MadLevelFreeLayout.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Editor\Inspectors\MadLevelAbstractLayoutInspector.cs" Line="199" Column="91" NotebookId="1" />
-      <File FileName="Assets\Mad Level Manager\Scripts\Base\Layouts\MadLevelAbstractLayout.cs" Line="585" Column="8" NotebookId="1" />
-      <File FileName="Assets\Scripts\Play\CompleteUI.cs" Line="27" Column="24" NotebookId="1" />
-      <File FileName="Assets\Scripts\Play\CompleteManager.cs" Line="15" Column="27" NotebookId="1" />
-      <File FileName="Assets\Scripts\EventManager.cs" Line="33" Column="27" NotebookId="1" />
+      <File FileName="Assets\Scripts\Play\GameManager.cs" Line="26" Column="12" />
+      <File FileName="Assets\Scripts\Play\Spawner.cs" Line="24" Column="15" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
