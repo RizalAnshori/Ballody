@@ -52,17 +52,17 @@ public class CompleteUI : MonoBehaviour {
 			ballodyNameText.text = ballodyName;
 			if (crown == "Bronze") {
 				crownImg.sprite = crownSprite [0];
-				coinText.text = "50";
+				coinText.text = (ResourceManager.resourceManager.bonus*1 + 50).ToString();
 				diamondText.text = "0";
 				energyText.text = "0";
 			} else if (crown == "Silver") {
 				crownImg.sprite = crownSprite [1];
-				coinText.text = "100";
+				coinText.text = (ResourceManager.resourceManager.bonus*3 + 100).ToString();
 				diamondText.text = "1";
 				energyText.text = "0";
 			} else if (crown == "Gold") {
 				crownImg.sprite = crownSprite [2];
-				coinText.text = "200";
+				coinText.text = (ResourceManager.resourceManager.bonus*5 + 200).ToString();
 				diamondText.text = "3";
 				energyText.text = "1";
 			} 

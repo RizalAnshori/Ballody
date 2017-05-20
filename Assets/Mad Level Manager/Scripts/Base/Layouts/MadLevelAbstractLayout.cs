@@ -577,8 +577,8 @@ public abstract class MadLevelAbstractLayout : MadNode {
                 break;
 			
 			case LoadLevel.LoadCondition:
-				if (ResourceManager.instance.resource.coin >= loadLevelLoadLevelDelay) {
-					ResourceManager.instance.resource.coin -= (int)loadLevelLoadLevelDelay;
+				if (ResourceManager.resourceManager.resource.coin >= loadLevelLoadLevelDelay) {
+					ResourceManager.resourceManager.resource.coin -= (int)loadLevelLoadLevelDelay;
 					icon.LoadLevel ();
 					//Debug.Log ("GO");
 				} else {

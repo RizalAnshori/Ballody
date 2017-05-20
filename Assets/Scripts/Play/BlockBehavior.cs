@@ -28,16 +28,26 @@ public class BlockBehavior : MonoBehaviour {
         //pos 4.5
         if (this.transform.position.y <= 4 && !isDone)
         {
-            spawner.SpawnActive();
+			if (spawner.isBonusStage) {
+				spawner.SpawnBonus ();
+			} else {
+				spawner.SpawnActive();
+			}
             isDone = true;
         }
     }
 
     void OnTriggerEnter2D(Collider2D col)
     {
-        if(col.gameObject.tag == "Death Line")
+		if(col.gameObject.tag == "Death Line")
         {
-			EventManager.OnGameOver(true);
+			if (!spawner.isBonusStage) {
+				//EventManager.OnGameOver (true);
+				this.gameObject.SetActive (false);
+			} else {
+				this.gameObject.SetActive (false);
+				ResourceManager.resourceManager.blockHit += 1;
+			}
         }
     }
 

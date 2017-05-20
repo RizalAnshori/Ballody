@@ -42,21 +42,21 @@ public class CompleteManager : MonoBehaviour {
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Silver", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Gold", false);
 			MadLevelProfile.SetCompleted (MadLevel.currentLevelName,true);
-			ResourceManager.instance.AddResources (crownInt, 1, levelCrown);
+			ResourceManager.resourceManager.AddResources (crownInt, 1, levelCrown);
 		} else if (crown == "Silver") {
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Playable", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Bronze", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Silver", true);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Gold", false);
 			MadLevelProfile.SetCompleted (MadLevel.currentLevelName,true);
-			ResourceManager.instance.AddResources (crownInt, 2, levelCrown);
+			ResourceManager.resourceManager.AddResources (crownInt, 2, levelCrown);
 		} else if (crown == "Gold") {
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Playable", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Bronze", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Silver", false);
 			MadLevelProfile.SetLevelBoolean (MadLevel.currentLevelName, "Gold", true);
 			MadLevelProfile.SetCompleted (MadLevel.currentLevelName,true);
-			ResourceManager.instance.AddResources (crownInt, 3, levelCrown);
+			ResourceManager.resourceManager.AddResources (crownInt, 3, levelCrown);
 		} else {
 			Debug.Log ("Missed");
 		}

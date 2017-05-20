@@ -25,6 +25,12 @@ public class GameManager : MonoBehaviour {
 
     public AudioSource audioSource;
     public AudioClip audioClip;
+	public AudioClip bonusAudioBlock;
+
+	//Use for flag
+	bool isBonusCalled = true;
+	string crown;
+
 
     void OnEnable()
     {
@@ -51,9 +57,21 @@ public class GameManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        CheckHighScore();
-        textScore.text = score.ToString();
-        Timer();
+		textScore.text = score.ToString();
+		if (!spawnerScript.isBonusStage) {
+			CheckHighScore ();
+			Timer ();
+		} else {
+			isBonusFinished ();
+		}
+	}
+
+	void isBonusFinished()
+	{
+		if(ResourceManager.resourceManager.blockHit >= 20) {
+			StartCoroutine ("SendRank");
+			Debug.Log ("Else If Called");
+		}
 	}
 
     void CheckHighScore()
@@ -68,11 +86,6 @@ public class GameManager : MonoBehaviour {
         }
     }
 
-	IEnumerator PlayAudio()
-	{
-		yield return new WaitForSeconds (5);
-		audioSource.PlayOneShot(audioClip);
-	}
 
     void Timer()
     {
@@ -81,18 +94,12 @@ public class GameManager : MonoBehaviour {
 			timerSlider.value += (timerSlider.maxValue/startingTime)*Time.deltaTime;
 		}
 		if (timerSlider.value >= 1) {
-			EventManager.OnGameOver (false);
+			//If Player can finish the map
+			//EventManager.OnGameOver (false);
+			CheckRank(false);
 		}
     }
 
-	bool isFinishedCheck()
-	{
-		if (timerSlider.value > timerSlider.maxValue-(timerSlider.maxValue/startingTime)*5) {
-			return true;
-		} else {
-			return false;
-		}
-	}
 
 	void OnGameOver(bool isMissed)
     {
@@ -102,7 +109,6 @@ public class GameManager : MonoBehaviour {
 
 	void CheckRank(bool isMiss)
 	{
-		string crown;
 		if (!isMiss) {
 			persentase = ((float)perfect / (float)spawnerScript.totalBlock) * 100;
 			if (persentase <= 40) {
@@ -112,11 +118,45 @@ public class GameManager : MonoBehaviour {
 			} else {
 				crown = "Silver";
 			}
+			StartCoroutine ("DelayToBonus");
 		} else {
 			crown = "Missed";
+			EventManager.OnCalcResult (crown); //Calling Complete UI
 		}
 		Debug.Log (crown);
-//		EventManager.OnCalcResult (crown); //Calling Complete UI
+	}
+
+	IEnumerator SendRank()
+	{
+		yield return new WaitForSeconds (0.5f);
+		EventManager.OnCalcResult (crown);
+		Debug.Log ("Send Rank Called");
+	}
+
+	IEnumerator DelayToBonus()
+	{
+		yield return new WaitForSeconds (0.1f);
+		if (isBonusCalled) {
+			isBonusCalled = false;
+			spawnerScript.isBonusStage = true;
+			spawnerScript.SpawnBonus ();
+//			spawnerScript.crown = crown;
+		}
+	}
+
+	IEnumerator PlayAudio()
+	{
+		yield return new WaitForSeconds (5);
+		audioSource.PlayOneShot(audioClip);
+	}
+
+	bool isFinishedCheck()
+	{
+		if (timerSlider.value > timerSlider.maxValue-(timerSlider.maxValue/startingTime)*5) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
     public string CalculateScore(float pos)

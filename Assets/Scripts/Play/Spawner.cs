@@ -5,16 +5,20 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour {
 
     public GameObject Block;
+	public Sprite bonusSprite;
     public Transform[] spawnPos;
-    public float speed;
+	public List<GameObject> pooledObj;
+
+	public static Spawner SharedInstance;
+
 	public bool isTutorial;
 	public bool isStopSpawn;
-
-    public static Spawner SharedInstance;
-    public List<GameObject> pooledObj;
-    public int amountToPool;
-
+	public bool isBonusStage;
+	public float speed;
+//	public string crown;
+	public int amountToPool;
 	public int totalBlock;
+	public int bonusBlock;
 
     void OnEnable()
     {
@@ -36,6 +40,7 @@ public class Spawner : MonoBehaviour {
         //Spawn();
 		isTutorial = true;
         Initiate();
+		bonusBlock = 0;
         //SpawnActive();
 	}
 	
@@ -58,7 +63,17 @@ public class Spawner : MonoBehaviour {
 	void OnGameOver(bool isMiss)
     {
         speed = 0;
+		Debug.Log ("Spawner's OnGameOver");
     }
+
+	void Finished()
+	{
+		isTutorial = false;
+		SpawnActive ();
+		Debug.Log ("Finished");
+	}
+
+
 
     public GameObject GetPooledObject()
     {
@@ -71,13 +86,6 @@ public class Spawner : MonoBehaviour {
         }
         return null;
     }
-
-	void Finished()
-	{
-		isTutorial = false;
-		SpawnActive ();
-		Debug.Log ("Finished");
-	}
 
     public void SpawnActive()
     {
@@ -96,4 +104,24 @@ public class Spawner : MonoBehaviour {
 			Debug.Log (isTutorial);
 		}
     }
+
+	public void SpawnBonus()
+	{
+		Debug.Log ("Spawn Bonus Called");
+		if (bonusBlock <= 20) {
+			GameObject blok = GetPooledObject ();
+			if (blok != null) {
+				blok.transform.position = new Vector3 (spawnPos [Random.Range (0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
+				blok.GetComponent<SpriteRenderer> ().sprite = bonusSprite;
+				blok.SetActive (true);
+			} else if (blok == null) {
+				GameObject objPlus = (GameObject)Instantiate (Block);
+				objPlus.transform.position = new Vector3 (spawnPos [Random.Range (0, spawnPos.Length - 1)].transform.position.x, 5.7f, 0);
+				objPlus.GetComponent<SpriteRenderer> ().sprite = bonusSprite;
+				pooledObj.Add (objPlus);
+			}
+			bonusBlock++;
+		} 
+
+	}
 }

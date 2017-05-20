@@ -11,10 +11,12 @@ public class Resource{
 }
 
 public class ResourceManager : MonoBehaviour {
-	public static ResourceManager instance = null;
+	public static ResourceManager resourceManager = null;
 	public Resource resource = new Resource();
 	string JSONName = "resourceJson";
 	string jSONPath = "Assets/Resources/ResourceJSON.json";
+	public int bonus;
+	public int blockHit;
 
 	void OnEnable()
 	{
@@ -30,9 +32,9 @@ public class ResourceManager : MonoBehaviour {
 	{
 		
 		//Debug.Log (PlayerPrefs.GetString(JSONName));
-		if (instance == null)
-			instance = this;
-		else if (instance != this) {
+		if (resourceManager == null)
+			resourceManager = this;
+		else if (resourceManager != this) {
 			Destroy (gameObject);
 		}
 
@@ -53,7 +55,7 @@ public class ResourceManager : MonoBehaviour {
 	{
 		switch (resourceName) {
 		case"coin":
-			resource.coin += 1;
+			resource.coin += 300;
 			break;
 		case "diamond":
 			resource.diamond += 1;

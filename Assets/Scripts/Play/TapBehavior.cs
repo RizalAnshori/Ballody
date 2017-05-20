@@ -6,6 +6,7 @@ public class TapBehavior : MonoBehaviour {
     public bool isActivated;
     public string GameObjectId;
     public GameManager GM;
+	public Spawner spawnerScript;
     public ParticleSystem[] particleSystemObj;
 
     // Use this for initialization
@@ -84,6 +85,10 @@ public class TapBehavior : MonoBehaviour {
             Debug.Log(col.gameObject.name + "hancur");
             //Destroy(col.gameObject);
             col.gameObject.SetActive(false);
+			if (spawnerScript.isBonusStage) {
+				GM.audioSource.PlayOneShot (GM.bonusAudioBlock);
+				ResourceManager.resourceManager.blockHit += 1;
+			}
             Deactivate();
         }
     }

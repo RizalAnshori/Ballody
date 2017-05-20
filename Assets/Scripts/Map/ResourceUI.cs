@@ -15,10 +15,10 @@ public class ResourceUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		coinText.text = ResourceManager.instance.resource.coin.ToString ();
-		diamondText.text = ResourceManager.instance.resource.diamond.ToString ();
-		if (ResourceManager.instance.resource.energy != 5) {
-			energyText.text = ResourceManager.instance.resource.energy.ToString ();
+		coinText.text = ResourceManager.resourceManager.resource.coin.ToString ();
+		diamondText.text = ResourceManager.resourceManager.resource.diamond.ToString ();
+		if (ResourceManager.resourceManager.resource.energy != 5) {
+			energyText.text = ResourceManager.resourceManager.resource.energy.ToString ();
 		} else {
 			energyText.text = "FULL";
 		}
