@@ -446,11 +446,19 @@ public abstract class MadLevelAbstractLayout : MadNode {
             case LookLevelType.LastCompleted:
                 LookAtLastCompletedLevel();
                 break;
+			case LookLevelType.UserDefined:
+				LookAtUserDefined ();
+				break;
             default:
                 Debug.LogError("Unknown level type: " + lookAtLevel);
                 break;
         }
     }
+	
+	private void LookAtUserDefined()
+	{
+		Debug.Log ("User Defined Called");
+	}
 
     private void LookAtLastCompletedLevel() {
         var lastCompletedIcon = GetLastCompletedIcon();
@@ -715,6 +723,7 @@ public abstract class MadLevelAbstractLayout : MadNode {
         FirstLevel,
         LastUnlocked,
         LastCompleted,
+		UserDefined,
     }
 
     public enum LevelsEnumerationType {

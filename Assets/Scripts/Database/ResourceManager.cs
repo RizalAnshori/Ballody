@@ -14,13 +14,13 @@ public class ResourceManager : MonoBehaviour {
 	public static ResourceManager resourceManager = null;
 	public Resource resource = new Resource();
 	string JSONName = "resourceJson";
-	string jSONPath = "Assets/Resources/ResourceJSON.json";
+	string jSONPathOri = "Assets/Resources/ResourceJSON.json";
+	string JSONPathNew;
 	public int bonus;
 	public int blockHit;
 
 	void OnEnable()
 	{
-		Load ();
 	}
 
 	void OnDisable()
@@ -28,9 +28,14 @@ public class ResourceManager : MonoBehaviour {
 		SaveData();
 	}
 
+	void OnApplicationQuit()
+	{
+		SaveData();
+	}
+
 	void Awake()
 	{
-		
+		JSONPathNew = Application.persistentDataPath + "/ResourceJSONNew.json";
 		//Debug.Log (PlayerPrefs.GetString(JSONName));
 		if (resourceManager == null)
 			resourceManager = this;
@@ -43,7 +48,7 @@ public class ResourceManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+		Load ();
 	}
 	
 	// Update is called once per frame
@@ -62,6 +67,12 @@ public class ResourceManager : MonoBehaviour {
 			break;
 		case "energy":
 			resource.energy += 1;
+			break;
+		case "quit":
+			Application.Quit ();
+			break;
+		case "save":
+			SaveData ();
 			break;
 		}
 	}
@@ -92,25 +103,39 @@ public class ResourceManager : MonoBehaviour {
 
 	void Load()
 	{
-		if (File.ReadAllText (jSONPath) != "") {
-			string json = File.ReadAllText (jSONPath);
-			resource = JsonUtility.FromJson<Resource> (json);
+		string json = "";
+		if (File.Exists(JSONPathNew)) {
+			json = File.ReadAllText (JSONPathNew);
 		} else {
-			Debug.Log ("Empty");
-			resource.coin = 2000;
-			resource.diamond = 5;
-			resource.energy = 5;
+			TextAsset file = Resources.Load ("ResourceJSON") as TextAsset;
+			json = file.ToString ();
 		}
+		resource = JsonUtility.FromJson<Resource> (json);
+
+//		if (File.ReadAllText (jSONPath) != "") {
+//			string json = File.ReadAllText (jSONPath);
+//			resource = JsonUtility.FromJson<Resource> (json);
+//		} else {
+//			Debug.Log ("Empty");
+//			resource.coin = 2000;
+//			resource.diamond = 5;
+//			resource.energy = 5;
+//		}
+
+		Debug.Log ("Load Called");
 	}
 
 	void SaveData()
 	{
 		string json = JsonUtility.ToJson (resource);
 		Debug.Log (json);
-		StreamWriter sw = File.CreateText (jSONPath);
-		sw.Close ();
 
-		File.WriteAllText (jSONPath, json);
+//		string path = Application.persistentDataPath + "/ResourceJSON.json";
+//		StreamWriter sw = File.CreateText (path);
+//		sw.WriteLine (json);
+//		sw.Close ();
+
+		File.WriteAllText(JSONPathNew,json);
 		Debug.Log ("Saved");
 	}
 }
