@@ -12,6 +12,9 @@ public class EventManager : MonoBehaviour {
 	public delegate void CrownResult(string Crown);
 	public static event CrownResult OnCrownResultE;
 
+    public delegate void MapUnlocked(string id);
+    public static event MapUnlocked OnMapUnlockedE;
+
     // Use this for initialization
 	void Start () {
 	
@@ -44,4 +47,12 @@ public class EventManager : MonoBehaviour {
 			OnCrownResultE (crown);
 		}
 	}
+
+    public static void OnMapUnlocked(string landMarkID)
+    {
+        if(OnMapUnlockedE!=null)
+        {
+            OnMapUnlockedE(landMarkID);
+        }
+    }
 }

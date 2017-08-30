@@ -82,19 +82,19 @@ public class ResourceManager : MonoBehaviour {
 		if (crownInit < crownValue) {
 			if (crownValue == 1) {
 				PlayerPrefs.SetInt (crownPrefs, 1);
-				resource.coin = 50;
-				resource.diamond = 0;
-				resource.energy = 0;
+				resource.coin += 50;
+				resource.diamond += 0;
+				resource.energy += 0;
 			} else if (crownValue == 2) {
 				PlayerPrefs.SetInt (crownPrefs, 2);
-				resource.coin = 100;
-				resource.diamond = 1;
-				resource.energy = 0;
+				resource.coin += 100;
+				resource.diamond += 1;
+				resource.energy += 0;
 			} else if (crownValue == 3) {
 				PlayerPrefs.SetInt (crownPrefs, 3);
-				resource.coin = 200;
-				resource.diamond = 3;
-				resource.energy = 1;
+				resource.coin += 200;
+				resource.diamond += 3;
+				resource.energy += 1;
 			}
 		} else {
 			Debug.Log ("You get Nothing");

@@ -3,11 +3,27 @@ using System.Collections;
 using MadLevelManager;
 using System.Collections.Generic;
 
+[System.Serializable]
+public struct CheckPoint
+{
+    public string landMarkId;
+    public GameObject level;
+    public GameObject landMark;
+}
+
 public class CompleteChecker : MonoBehaviour {
 
-	List<string> property = new List<string>();
-	public string[] levelNameFlag;
-	public GameObject[] landMark, showLandMarkBtn;
+    public List<CheckPoint> cekPointList;
+
+    void OnEnable()
+    {
+        EventManager.OnMapUnlockedE += CheckLandMark;
+    }
+
+    void OnDisable()
+    {
+        EventManager.OnMapUnlockedE -= CheckLandMark;
+    }
 
 	// Use this for initialization
 	void Start () {
@@ -16,19 +32,22 @@ public class CompleteChecker : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CheckCompletedMap ();
-		property = MadLevelProfile.GetLevelPropertyNames ("Level 1");
-		foreach (var properti in property) {
-			//Debug.Log (properti);
-		}
+		
 	}
 
-	void CheckCompletedMap()
-	{
-		for (int i = 0; i < levelNameFlag.Length; i++) {
-			if (MadLevelProfile.IsCompleted (levelNameFlag [i])) {
-				landMark [i].SetActive (true);
-			}
-		}
-	}
+    void CheckLandMark(string id)
+    {
+        for(int i = 0; i<cekPointList.Count; i++)
+        {
+            if(cekPointList[i].landMarkId == id)
+            {
+                //Unlock LandMark
+            }
+            else
+            {
+                //LandMark Not Found
+                //There is nothing to do
+            }
+        }
+    }
 }

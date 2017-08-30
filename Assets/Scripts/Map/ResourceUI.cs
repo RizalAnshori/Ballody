@@ -21,9 +21,8 @@ public class ResourceUI : MonoBehaviour {
 			energyText.text = ResourceManager.resourceManager.resource.energy.ToString ();
 		} else {
 			energyText.text = "FULL";
+            ResourceManager.resourceManager.resource.energy = 5;
 		}
-
-
 	}
 
 	public void Test()

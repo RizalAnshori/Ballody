@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviour {
 	public AudioClip bonusAudioBlock;
 
 	//Use for flag
-	bool isBonusCalled = true;
+	bool isBonusCalled = true, isSentRank = true;
 	string crown;
 
 
@@ -69,8 +69,12 @@ public class GameManager : MonoBehaviour {
 	void isBonusFinished()
 	{
 		if(ResourceManager.resourceManager.blockHit >= 20) {
+            if(isSentRank)
+            {
 			StartCoroutine ("SendRank");
 			Debug.Log ("Else If Called");
+            }
+            isSentRank = false;
 		}
 	}
 
