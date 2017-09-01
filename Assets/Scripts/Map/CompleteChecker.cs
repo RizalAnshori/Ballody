@@ -42,6 +42,7 @@ public class CompleteChecker : MonoBehaviour {
             if(cekPointList[i].landMarkId == id)
             {
                 //Unlock LandMark
+                cekPointList[i].landMark.SetActive(true);
             }
             else
             {
@@ -51,3 +52,6 @@ public class CompleteChecker : MonoBehaviour {
         }
     }
 }
+
+///Note
+//Make PlayerPrefs to save how many landmark unlocked just for in case if we always check/broadcaster failed to notify
