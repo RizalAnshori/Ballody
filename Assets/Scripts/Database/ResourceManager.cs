@@ -13,6 +13,7 @@ public class Resource{
 public class ResourceManager : MonoBehaviour {
 	public static ResourceManager resourceManager = null;
 	public Resource resource = new Resource();
+    public LevelSetting levelDataBase;
 	string JSONName = "resourceJson";
 	string jSONPathOri = "Assets/Resources/ResourceJSON.json";
 	string JSONPathNew;

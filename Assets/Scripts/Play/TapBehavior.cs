@@ -82,7 +82,7 @@ public class TapBehavior : MonoBehaviour {
         if (col.gameObject.tag == "Block" && isActivated)
         {
             Detector(col.transform.position);
-            Debug.Log(col.gameObject.name + "hancur");
+            //Debug.Log(col.gameObject.name + "hancur");
             //Destroy(col.gameObject);
             col.gameObject.SetActive(false);
 			if (spawnerScript.isBonusStage) {

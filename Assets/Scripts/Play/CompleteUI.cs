@@ -5,7 +5,7 @@ using MadLevelManager;
 
 public class CompleteUI : MonoBehaviour {
 
-	public string ballodyName;
+	string ballodyName;
 	public GameObject completeCanvas;
 	public GameObject winPanel;
 	public GameObject failPanel;
@@ -29,14 +29,10 @@ public class CompleteUI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		completeCanvas.SetActive (false);
+        ballodyName = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].ballodyName;
+        completeCanvas.SetActive (false);
 	}
 	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
 	void OnResultCrown(string crown)
 	{
 		completeCanvas.SetActive (true);

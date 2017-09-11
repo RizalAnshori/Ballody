@@ -8,7 +8,7 @@ using System;
 public class CompleteManager : MonoBehaviour {
 	
 	int crownInt;
-	public string levelCrown;
+	string levelCrown;
 
     void OnEnable()
     {
@@ -22,7 +22,8 @@ public class CompleteManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (PlayerPrefs.GetInt (levelCrown) != null) {
+        levelCrown = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].levelPlayerPrefs;
+        if (PlayerPrefs.GetInt (levelCrown) != null) {
 			crownInt = PlayerPrefs.GetInt (levelCrown);
 		} else {
 			crownInt = 0;

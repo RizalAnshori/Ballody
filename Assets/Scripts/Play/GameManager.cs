@@ -4,10 +4,12 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
 
+    public int dataIndex;
+
     //Use for score and highscore
+    string playerPrefsID;
 	public static int score;
 	public int highScore;
-    public string playerPrefsID;
 	public Text textScore;
 	public Text textHighScore;
 
@@ -48,7 +50,9 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-		score = 0;
+        audioClip = ResourceManager.resourceManager.levelDataBase.levelDatas[dataIndex].levelAudio;
+        playerPrefsID = ResourceManager.resourceManager.levelDataBase.levelDatas[dataIndex].levelPlayerPrefs;
+        score = 0;
         highScore = PlayerPrefs.GetInt(playerPrefsID);
         startingTime = audioClip.length;
 		StartCoroutine ("PlayAudio");

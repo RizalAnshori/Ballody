@@ -11,10 +11,10 @@ public class Spawner : MonoBehaviour {
 
 	public static Spawner SharedInstance;
 
+	public float speed;
 	public bool isTutorial;
 	public bool isStopSpawn;
 	public bool isBonusStage;
-	public float speed;
 //	public string crown;
 	public int amountToPool;
 	public int totalBlock;
@@ -41,8 +41,9 @@ public class Spawner : MonoBehaviour {
 		isTutorial = true;
         Initiate();
 		bonusBlock = 0;
+        speed = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].levelSpeed;
         //SpawnActive();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
