@@ -29,6 +29,7 @@ public class MadFreeDraggableInspector : Editor {
     SerializedProperty scaleMode;
     SerializedProperty scalingMin;
     SerializedProperty scalingMax;
+	SerializedProperty dragTarget;
     
     SerializedProperty moveEasing;
     SerializedProperty moveEasingType;
@@ -79,8 +80,8 @@ public class MadFreeDraggableInspector : Editor {
             }
         });
 
-        EditorGUILayout.Space();
-        
+		EditorGUILayout.Space ();
+
         MadGUI.PropertyFieldEnumPopup(scaleMode, "Allow Scaling");
         MadGUI.ConditionallyEnabled(script.scaleMode == MadFreeDraggable.ScaleMode.Free, () => {
             MadGUI.Indent(() => {

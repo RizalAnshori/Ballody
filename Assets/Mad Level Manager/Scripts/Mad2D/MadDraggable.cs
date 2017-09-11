@@ -64,6 +64,7 @@ public class MadDraggable : MadNode {
     [SerializeField] bool allowScaling = false;
     [SerializeField] float scaleMax = 2;
     [SerializeField] float scaleMin = 0.25f;
+	[SerializeField] int dragTarget = 1;
     
 #if UNITY_ANDROID || UNITY_IPHONE || UNITY_WP8 || UNITY_BLACKBERRY    
     protected float lastDoubleTouchDistance = 0;
@@ -110,14 +111,14 @@ public class MadDraggable : MadNode {
         if (this.GetType() == typeof(MadDraggable)) {
             Debug.Log("Upgrading Draggable object... Please save your scene afterwards.");
             switch (dragMode) {
-                case DragMode.Free:
-                    var free = gameObject.AddComponent<MadFreeDraggable>() as MadFreeDraggable;
+				case DragMode.Free:
+					var free = gameObject.AddComponent<MadFreeDraggable> () as MadFreeDraggable;
                     #pragma warning disable 618
-                    free.dragArea = freeDragArea;
-                    free.scaling = allowScaling;
+					free.dragArea = freeDragArea;
+					free.scaling = allowScaling;
                     #pragma warning restore 618
-                    free.scalingMax = scaleMax;
-                    free.scalingMin = scaleMin;
+					free.scalingMax = scaleMax;
+					free.scalingMin = scaleMin;
                     break;
                 case DragMode.DragStop:
                     gameObject.AddComponent<MadDragStopDraggable>();

@@ -42,6 +42,16 @@ public class MadAnimScale : MadAnim {
     #endregion
 
     #region Methods
+    
+        void OnEnable()
+        {
+            StartAnim();
+        }
+
+        void OnDisable()
+        {
+
+        }
 
     protected override void Start() {
         easingFunction = GetEasingFunction();
