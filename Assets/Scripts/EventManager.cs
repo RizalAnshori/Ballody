@@ -53,6 +53,7 @@ public class EventManager : MonoBehaviour {
         if(OnMapUnlockedE!=null)
         {
             OnMapUnlockedE(landMarkID);
+            Debug.Log("Complete Broadcaster Called with Id" + landMarkID);
         }
     }
 }

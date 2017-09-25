@@ -7,6 +7,18 @@ public class CompletedBrodcaster : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        EventManager.OnMapUnlocked(landMarkId);
+        CekMap();
 	}
+
+    public void CekMap()
+    {
+        EventManager.OnMapUnlocked(landMarkId);
+        Debug.Log("Cek Map Called");
+    }
+
+    IEnumerator call()
+    {
+        yield return new WaitForSeconds(1);
+        
+    }
 }

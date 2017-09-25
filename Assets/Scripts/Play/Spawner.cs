@@ -5,9 +5,9 @@ using System.Collections.Generic;
 public class Spawner : MonoBehaviour {
 
     public GameObject Block;
-	public Sprite bonusSprite;
     public Transform[] spawnPos;
 	public List<GameObject> pooledObj;
+	Sprite bonusSprite;
 
 	public static Spawner SharedInstance;
 
@@ -42,13 +42,9 @@ public class Spawner : MonoBehaviour {
         Initiate();
 		bonusBlock = 0;
         speed = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].levelSpeed;
+        bonusSprite = ResourceManager.resourceManager.levelDataBase.bonusSprite;
         //SpawnActive();
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     void Initiate()
     {

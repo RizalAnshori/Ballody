@@ -7,7 +7,7 @@ using System.Collections.Generic;
 public struct CheckPoint
 {
     public string landMarkId;
-    public GameObject level;
+    //public GameObject level;
     public GameObject landMark;
 }
 
