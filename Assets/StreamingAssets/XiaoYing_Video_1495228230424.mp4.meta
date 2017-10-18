@@ -1,11 +1,8 @@
 fileFormatVersion: 2
-guid: f049dc89663797845889235024dc88a0
+guid: 286f326b129ff3c4ab3af9ccfa1801a8
 timeCreated: 1505129402
 licenseType: Pro
-MovieImporter:
-  serializedVersion: 1
-  quality: 1
-  linearTexture: 0
+DefaultImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 

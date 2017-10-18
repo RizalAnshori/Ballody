@@ -105,6 +105,7 @@ public class ResourceManager : MonoBehaviour {
 	void Load()
 	{
 		string json = "";
+        //Debug.Log(JSONPathNew);
 		if (File.Exists(JSONPathNew)) {
 			json = File.ReadAllText (JSONPathNew);
 		} else {

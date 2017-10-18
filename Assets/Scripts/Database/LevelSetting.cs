@@ -15,6 +15,7 @@ public class LevelData
     public int levelSpeed;
     public string levelPlayerPrefs;
     public AudioClip levelAudio;
+    public SubtitleData subtitle;
 }
 
 public class LevelSetting : ScriptableObject {
@@ -62,6 +63,9 @@ public class LevelSetting : ScriptableObject {
         EditorApplication.ExecuteMenuItem("Window/Inspector");
     }
 #endif
+
+    [SerializeField]
+    public Sprite bonusSprite;
 
     [SerializeField]
     public List<LevelData> levelDatas = new List<LevelData>();

@@ -155,7 +155,10 @@ public class GameManager : MonoBehaviour {
 	IEnumerator PlayAudio()
 	{
 		yield return new WaitForSeconds (5);
-		audioSource.PlayOneShot(audioClip);
+        audioSource.clip = audioClip;
+        audioSource.loop = false;
+        audioSource.Play();
+		//audioSource.PlayOneShot(audioClip);
 	}
 
 	bool isFinishedCheck()

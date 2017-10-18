@@ -8,8 +8,8 @@ public class SubtitleManager : MonoBehaviour {
 
     AudioSource audioSource;
     SubtitleData subtitleData;
-    float triggerTime;
-    int index = 0;
+    public float triggerTime;
+    public int index = 0;
 
     void OnEnable()
     {
@@ -34,20 +34,24 @@ public class SubtitleManager : MonoBehaviour {
 
     void SubtitleSetter()
     {
-        if(audioSource.time >= triggerTime)
+        if (audioSource.isPlaying)
         {
-            //set Trigger Time to be next trigger Time
-            //Change Subtitle Sprite
-            if(index < subtitleData.subtitleDatas.Count)
+            subtitleImage.gameObject.SetActive(true);
+            if (audioSource.time >= triggerTime)
             {
-            index++;
-            triggerTime = subtitleData.subtitleDatas[index].triggerTime;
-            subtitleImage.sprite = subtitleData.subtitleDatas[index-1].subtitleSprite;
-            }
-            else
-            {
-                subtitleImage.gameObject.SetActive(false);
+                subtitleImage.sprite = subtitleData.subtitleDatas[index].subtitleSprite;
+                subtitleImage.SetNativeSize();
+                if (index < subtitleData.subtitleDatas.Count - 1)
+                {
+                    index++;
+                    triggerTime = subtitleData.subtitleDatas[index].triggerTime;
+                }
             }
         }
+        else
+        {
+            subtitleImage.gameObject.SetActive(false);
+        }
+
     }
 }
