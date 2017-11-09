@@ -39,8 +39,16 @@ public class SubtitleManager : MonoBehaviour {
             subtitleImage.gameObject.SetActive(true);
             if (audioSource.time >= triggerTime)
             {
-                subtitleImage.sprite = subtitleData.subtitleDatas[index].subtitleSprite;
-                subtitleImage.SetNativeSize();
+                if(subtitleData.subtitleDatas[index].subtitleSprite != null)
+                {
+                    subtitleImage.gameObject.SetActive(true);
+                    subtitleImage.sprite = subtitleData.subtitleDatas[index].subtitleSprite;
+                    subtitleImage.SetNativeSize();
+                }
+                else
+                {
+                    subtitleImage.gameObject.SetActive(false);
+                }
                 if (index < subtitleData.subtitleDatas.Count - 1)
                 {
                     index++;
