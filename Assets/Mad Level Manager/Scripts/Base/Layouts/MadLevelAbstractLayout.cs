@@ -581,15 +581,17 @@ public abstract class MadLevelAbstractLayout : MadNode {
 
             case LoadLevel.DoNotLoad:
                 // don't do anything
+                Debug.Log("coind Needed : " + icon.coinNeeded);
 				Debug.Log("tes");
                 break;
 			
 			case LoadLevel.LoadCondition:
-				if (ResourceManager.resourceManager.resource.coin >= loadLevelLoadLevelDelay) {
-					ResourceManager.resourceManager.resource.coin -= (int)loadLevelLoadLevelDelay;
-					icon.LoadLevel ();
-					//Debug.Log ("GO");
-				} else {
+				if (ResourceManager.resourceManager.resource.coin >= icon.coinNeeded) {
+                        //ResourceManager.resourceManager.resource.coin -= (int)loadLevelLoadLevelDelay;
+                        Debug.Log("coind Needed : " + icon.coinNeeded);
+                        icon.LoadLevel ();
+                        //Debug.Log ("GO");
+                    } else {
 					//Debug.Log ("Stay");
 				}
 				break;

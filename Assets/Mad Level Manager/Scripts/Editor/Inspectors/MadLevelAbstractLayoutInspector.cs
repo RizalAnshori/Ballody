@@ -194,10 +194,10 @@ public class MadLevelAbstractLayoutInspector : Editor {
                 break;
 
 			case MadLevelAbstractLayout.LoadLevel.LoadCondition:
-				MadGUI.PropertyField (loadLevelLoadLevelDelay, "Minimum Coin");
-				if (loadLevelLoadLevelDelay.floatValue < 0) {
-					loadLevelLoadLevelDelay.floatValue = Mathf.Max (0, loadLevelLoadLevelDelay.floatValue);
-				}
+				//MadGUI.PropertyField (loadLevelLoadLevelDelay, "Minimum Coin");
+				//if (loadLevelLoadLevelDelay.floatValue < 0) {
+				//	loadLevelLoadLevelDelay.floatValue = Mathf.Max (0, loadLevelLoadLevelDelay.floatValue);
+				//}
 				break;
 
             default:

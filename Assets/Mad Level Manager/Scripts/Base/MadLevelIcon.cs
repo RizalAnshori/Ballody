@@ -49,6 +49,10 @@ public class MadLevelIcon : MadSprite {
     public List<GameObject> showWhenLevelNotCompleted = new List<GameObject>();
     public List<GameObject> showWhenLevelCompleted = new List<GameObject>();
 
+        //For Conditional unlock
+    public float coinNeeded;
+    public float energyNeeded;
+
     [HideInInspector]
     public int version = 0;
 

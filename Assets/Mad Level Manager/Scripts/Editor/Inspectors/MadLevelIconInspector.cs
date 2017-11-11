@@ -26,6 +26,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
     
     SerializedProperty unlockOnComplete;
     SerializedProperty canFocusIfLocked;
+        SerializedProperty energyNeeded;
+        SerializedProperty coinNeeded;
 
     private MadLevelIcon levelIcon;
 
@@ -39,6 +41,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
         unlockOnComplete = serializedObject.FindProperty("unlockOnComplete");
         canFocusIfLocked = serializedObject.FindProperty("canFocusIfLocked");
         levelIcon = target as MadLevelIcon;
+        coinNeeded = serializedObject.FindProperty("coinNeeded");
+        energyNeeded = serializedObject.FindProperty("energyNeeded");
     }
 
     public override void OnInspectorGUI() {
@@ -85,6 +89,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
 
             serializedObject.UpdateIfDirtyOrScript();
             MadGUI.PropertyField(canFocusIfLocked, "Can Focus If Locked");
+            MadGUI.PropertyField(coinNeeded, "Coin needed to Unlock");
+            MadGUI.PropertyField(energyNeeded, "Energy needed to unlock");
 
             serializedObject.ApplyModifiedProperties();
 
