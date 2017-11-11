@@ -5,8 +5,8 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class MoviePlayer : MonoBehaviour {
 
-	// Use this for initialization
-	void OnEnable () {
+    // Use this for initialization
+    void Start () {
         Init();
 	}
 	
