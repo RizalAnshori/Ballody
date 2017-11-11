@@ -33,6 +33,8 @@ public class GameManager : MonoBehaviour {
 	bool isBonusCalled = true, isSentRank = true;
 	string crown;
 
+    public GameObject bonusSentenceSign;
+
 
     void OnEnable()
     {
@@ -147,7 +149,11 @@ public class GameManager : MonoBehaviour {
 		if (isBonusCalled) {
 			isBonusCalled = false;
 			spawnerScript.isBonusStage = true;
-			spawnerScript.SpawnBonus ();
+            bonusSentenceSign.SetActive(true);
+            yield return new WaitForSeconds(1);
+            bonusSentenceSign.SetActive(false);
+            yield return new WaitForSeconds(1);
+            spawnerScript.SpawnBonus ();
 //			spawnerScript.crown = crown;
 		}
 	}

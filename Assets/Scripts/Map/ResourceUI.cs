@@ -17,7 +17,7 @@ public class ResourceUI : MonoBehaviour {
 	void Update () {
 		coinText.text = ResourceManager.resourceManager.resource.coin.ToString ();
 		diamondText.text = ResourceManager.resourceManager.resource.diamond.ToString ();
-		if (ResourceManager.resourceManager.resource.energy != 5) {
+		if (ResourceManager.resourceManager.resource.energy < 5) {
 			energyText.text = ResourceManager.resourceManager.resource.energy.ToString ();
 		} else {
 			energyText.text = "FULL";

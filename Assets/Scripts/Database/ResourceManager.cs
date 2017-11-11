@@ -20,6 +20,10 @@ public class ResourceManager : MonoBehaviour {
 	public int bonus;
 	public int blockHit;
 
+    DateTime currentTime;
+    DateTime oldTime;
+    string timePlayerPrefs = "TimeElapsed";
+
 	void OnEnable()
 	{
 	}
@@ -52,11 +56,6 @@ public class ResourceManager : MonoBehaviour {
 		Load ();
 	}
 	
-	// Update is called once per frame
-	void Update () {
-
-	}
-
 	public void Add(string resourceName)
 	{
 		switch (resourceName) {
@@ -114,17 +113,30 @@ public class ResourceManager : MonoBehaviour {
 		}
 		resource = JsonUtility.FromJson<Resource> (json);
 
-//		if (File.ReadAllText (jSONPath) != "") {
-//			string json = File.ReadAllText (jSONPath);
-//			resource = JsonUtility.FromJson<Resource> (json);
-//		} else {
-//			Debug.Log ("Empty");
-//			resource.coin = 2000;
-//			resource.diamond = 5;
-//			resource.energy = 5;
-//		}
+        //		if (File.ReadAllText (jSONPath) != "") {
+        //			string json = File.ReadAllText (jSONPath);
+        //			resource = JsonUtility.FromJson<Resource> (json);
+        //		} else {
+        //			Debug.Log ("Empty");
+        //			resource.coin = 2000;
+        //			resource.diamond = 5;
+        //			resource.energy = 5;
+        //		}
 
-		Debug.Log ("Load Called");
+        //Loading Time
+        currentTime = System.DateTime.Now;
+        if (PlayerPrefs.HasKey(timePlayerPrefs))
+        {
+            long temp = Convert.ToInt64(PlayerPrefs.GetString(timePlayerPrefs));
+            oldTime = DateTime.FromBinary(temp);
+            TimeSpan difference = currentTime.Subtract(oldTime);
+            int multiply = (int)difference.TotalMinutes / 2;
+            resource.energy += multiply;
+
+            //Debug.Log("TimeSpan in TotalMinutes : " + difference.TotalMinutes);
+        }
+
+		//Debug.Log ("Load Called");
 	}
 
 	void SaveData()
@@ -139,5 +151,8 @@ public class ResourceManager : MonoBehaviour {
 
 		File.WriteAllText(JSONPathNew,json);
 		Debug.Log ("Saved");
+
+        //Saving Time
+        PlayerPrefs.SetString(timePlayerPrefs, System.DateTime.Now.ToBinary().ToString());
 	}
 }
