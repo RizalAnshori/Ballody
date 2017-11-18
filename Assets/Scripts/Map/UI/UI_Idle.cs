@@ -5,9 +5,10 @@ using UnityEngine.UI;
 
 namespace Ballody
 {
-    public class UI_Template : MonoBehaviour, IBFSMState
+    public class UI_Idle : MonoBehaviour, IBFSMState
     {
-        [HideInInspector] public UIManager parent;
+        [HideInInspector]
+        public UIManager parent;
 
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
@@ -25,4 +26,3 @@ namespace Ballody
         }
     }
 }
-

@@ -13,7 +13,7 @@ public class ButtonClick : MonoBehaviour {
 	void Update () {
 	
 	}
-
+    
     public void argument()
     {
 		if (MadLevelProfile.IsCompleted ("Level 1")) {
