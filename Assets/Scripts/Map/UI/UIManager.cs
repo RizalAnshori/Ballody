@@ -12,6 +12,7 @@ namespace Ballody
         public UI_Collection stateCollection;
         public UI_Setting stateSetting;
         public UI_Map stateMap;
+        public UI_ChangeLanguage stateChangeLanguage;
         public UI_Idle stateIdle;
 
         [Space]
@@ -25,6 +26,7 @@ namespace Ballody
         {
             InitializeStates();
             InitializeButton();
+            GoToState(stateIdle);
         }
         
         void Update()
@@ -42,6 +44,7 @@ namespace Ballody
             RegisterState(stateCollection);
             RegisterState(stateSetting);
             RegisterState(stateMap);
+            RegisterState(stateChangeLanguage);
             RegisterState(stateIdle);
 
             stateShop.parent = this;
@@ -49,6 +52,7 @@ namespace Ballody
             stateHallOfFame.parent = this;
             stateSetting.parent = this;
             stateMap.parent = this;
+            stateChangeLanguage.parent = this;
             stateIdle.parent = this;
         }
 
@@ -59,6 +63,7 @@ namespace Ballody
             stateCollection.InitButton(collectionButton);
             stateSetting.InitButton(settingButton);
             stateMap.InitButton(mapButton);
+            stateChangeLanguage.InitButton(null);
         }
     }
 }
