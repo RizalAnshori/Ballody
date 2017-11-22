@@ -21,9 +21,21 @@ namespace Ballody
         public Button loginFBButton;
         public Button creditButton;
 
+        public string Id
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+
+            set
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            
             settingWindow.SetActive(true);
         }
 

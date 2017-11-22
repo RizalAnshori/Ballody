@@ -6,36 +6,37 @@ using UnityEngine.UI;
 
 namespace Ballody
 {
-    public class UI_Collection : MonoBehaviour, IBFSMState
+    public class UI_Coin : MonoBehaviour, IBFSMState
     {
         [HideInInspector]
         public UIManager parent;
-        
-        public GameObject collectionWindow;
-        
+
+        [SerializeField]
+        GameObject coinWindow;
+
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            collectionWindow.transform.DOScale(1, 0.3f).OnPlay(() => { collectionWindow.SetActive(true); });
-            //collectionWindow.SetActive(true);
+            coinWindow.transform.DOScale(1, 0.3f).OnPlay(() => { coinWindow.SetActive(true); });
+            //coinWindow.SetActive(true);
         }
 
         public void OnExit(TransitionCause cause)
         {
-            collectionWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { collectionWindow.SetActive(false); });
-            //collectionWindow.SetActive(false);
+            coinWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { coinWindow.SetActive(false); });
+            //coinWindow.SetActive(false);
         }
 
         public void InitButton(Button button)
         {
-            collectionWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            coinWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             button.onClick.AddListener(() => {
-                if (collectionWindow.activeSelf)
+                if(coinWindow.activeSelf)
                 {
                     parent.GoToState(parent.stateIdle);
                 }
                 else
                 {
-                    parent.GoToState(parent.stateCollection);
+                    parent.GoToState(parent.stateCoin);
                 }
             });
         }

@@ -9,7 +9,7 @@ namespace Ballody
     {
         [HideInInspector]
         public UIManager parent;
-
+        
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
         }

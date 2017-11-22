@@ -13,6 +13,10 @@ namespace Ballody
         public UI_Setting stateSetting;
         public UI_Map stateMap;
         public UI_ChangeLanguage stateChangeLanguage;
+        public UI_Message stateMessage;
+        public UI_Energy stateEnergy;
+        public UI_Diamond stateDiamond;
+        public UI_Coin stateCoin;
         public UI_Idle stateIdle;
 
         [Space]
@@ -21,6 +25,10 @@ namespace Ballody
         public Button collectionButton;
         public Button settingButton;
         public Button mapButton;
+        public Button messageButton;
+        public Button energyButton;
+        public Button diamondButton;
+        public Button coinButton;
 
         void Start()
         {
@@ -45,6 +53,10 @@ namespace Ballody
             RegisterState(stateSetting);
             RegisterState(stateMap);
             RegisterState(stateChangeLanguage);
+            RegisterState(stateMessage);
+            RegisterState(stateEnergy);
+            RegisterState(stateDiamond);
+            RegisterState(stateCoin);
             RegisterState(stateIdle);
 
             stateShop.parent = this;
@@ -53,6 +65,10 @@ namespace Ballody
             stateSetting.parent = this;
             stateMap.parent = this;
             stateChangeLanguage.parent = this;
+            stateMessage.parent = this;
+            stateCoin.parent = this;
+            stateDiamond.parent = this;
+            stateEnergy.parent = this;
             stateIdle.parent = this;
         }
 
@@ -63,6 +79,10 @@ namespace Ballody
             stateCollection.InitButton(collectionButton);
             stateSetting.InitButton(settingButton);
             stateMap.InitButton(mapButton);
+            stateMessage.InitButton(messageButton);
+            stateEnergy.InitButton(energyButton);
+            stateDiamond.InitButton(diamondButton);
+            stateCoin.InitButton(coinButton);
             stateChangeLanguage.InitButton(null);
         }
     }

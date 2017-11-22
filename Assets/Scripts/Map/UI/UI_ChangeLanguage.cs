@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Bedivere.FSM;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,26 +11,31 @@ namespace Ballody
         [HideInInspector]
         public UIManager parent;
 
-        public GameObject changeLanguageWindow;
+        [SerializeField] GameObject settingWindow;
+        [SerializeField] GameObject changeLanguageWindow;
 
         [Space]
         public Button englishBtn;
         public Button indonesiaBtn;
         public Button javaneseBtn;
         public Button balineseBtn;
-
+        
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            changeLanguageWindow.SetActive(true);
+            settingWindow.SetActive(true);
+            changeLanguageWindow.transform.DOScale(1, 0.3f).OnPlay(() => { changeLanguageWindow.SetActive(true); });
+            //changeLanguageWindow.SetActive(true);
         }
 
         public void OnExit(TransitionCause cause)
         {
-            changeLanguageWindow.SetActive(false);
+            changeLanguageWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { changeLanguageWindow.SetActive(false); });
+            //changeLanguageWindow.SetActive(false);
         }
 
         public void InitButton(Button button)
         {
+            changeLanguageWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             englishBtn.onClick.AddListener(() => {
                 //add function
                 OnButtonClicked(englishBtn.name);
