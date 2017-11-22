@@ -1,4 +1,5 @@
 ﻿using System;
+using DG.Tweening;
 using Bedivere.FSM;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,31 +22,19 @@ namespace Ballody
         public Button loginFBButton;
         public Button creditButton;
 
-        public string Id
-        {
-            get
-            {
-                throw new NotImplementedException();
-            }
-
-            set
-            {
-                throw new NotImplementedException();
-            }
-        }
-
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            settingWindow.SetActive(true);
+            settingWindow.transform.DOScale(1, 0.3f).OnPlay(() => { settingWindow.SetActive(true); });
         }
 
         public void OnExit(TransitionCause cause)
         {
-            settingWindow.SetActive(false);
+            settingWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { settingWindow.SetActive(false); });
         }
 
         public void InitButton(Button button)
         {
+            settingWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             button.onClick.AddListener(() => {
                 if (settingWindow.activeSelf)
                 {

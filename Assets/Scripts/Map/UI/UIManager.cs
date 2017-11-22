@@ -17,6 +17,7 @@ namespace Ballody
         public UI_Energy stateEnergy;
         public UI_Diamond stateDiamond;
         public UI_Coin stateCoin;
+        public UI_ChoosingLevel stateChoosingLevel;
         public UI_Idle stateIdle;
 
         [Space]
@@ -34,7 +35,7 @@ namespace Ballody
         {
             InitializeStates();
             InitializeButton();
-            GoToState(stateIdle);
+            GoToState(stateChoosingLevel);
         }
         
         void Update()
@@ -57,6 +58,7 @@ namespace Ballody
             RegisterState(stateEnergy);
             RegisterState(stateDiamond);
             RegisterState(stateCoin);
+            RegisterState(stateChoosingLevel);
             RegisterState(stateIdle);
 
             stateShop.parent = this;
@@ -69,6 +71,7 @@ namespace Ballody
             stateCoin.parent = this;
             stateDiamond.parent = this;
             stateEnergy.parent = this;
+            stateChoosingLevel.parent = this;
             stateIdle.parent = this;
         }
 
@@ -83,6 +86,7 @@ namespace Ballody
             stateEnergy.InitButton(energyButton);
             stateDiamond.InitButton(diamondButton);
             stateCoin.InitButton(coinButton);
+            stateChoosingLevel.InitButton(null);
             stateChangeLanguage.InitButton(null);
         }
     }
