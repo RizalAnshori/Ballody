@@ -6,6 +6,7 @@ using System.Collections.Generic;
 [System.Serializable]
 public struct CheckPoint
 {
+    public MadLevelIcon tapIcon;
     public string landMarkId;
     //public GameObject level;
     public GameObject landMark;

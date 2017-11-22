@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour {
 	public bool isTutorial;
 	public bool isStopSpawn;
 	public bool isBonusStage;
+    public bool isGameOver;
 //	public string crown;
 	public int amountToPool;
 	public int totalBlock;
@@ -38,6 +39,7 @@ public class Spawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //Spawn();
+        isGameOver = false;
 		isTutorial = true;
         Initiate();
 		bonusBlock = 0;
@@ -60,6 +62,7 @@ public class Spawner : MonoBehaviour {
 	void OnGameOver(bool isMiss)
     {
         speed = 0;
+        isGameOver = true;
 		Debug.Log ("Spawner's OnGameOver");
     }
 

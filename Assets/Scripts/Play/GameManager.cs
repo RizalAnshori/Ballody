@@ -57,7 +57,8 @@ public class GameManager : MonoBehaviour {
         score = 0;
         highScore = PlayerPrefs.GetInt(playerPrefsID);
         startingTime = audioClip.length;
-		StartCoroutine ("PlayAudio");
+        //timerSlider.maxValue = audioClip.length;
+		StartCoroutine (PlayAudio());
         //audioSource.PlayOneShot(audioClip);
     }
 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour {
 		if(ResourceManager.resourceManager.blockHit >= 20) {
             if(isSentRank)
             {
-			StartCoroutine ("SendRank");
+			StartCoroutine (SendRank());
 			Debug.Log ("Else If Called");
             }
             isSentRank = false;
@@ -101,7 +102,8 @@ public class GameManager : MonoBehaviour {
     {
 		if (!spawnerScript.isTutorial) {
 			spawnerScript.isStopSpawn = isFinishedCheck ();
-			timerSlider.value += (timerSlider.maxValue/startingTime)*Time.deltaTime;
+            timerSlider.value += (timerSlider.maxValue/startingTime)*Time.deltaTime;
+            //timerSlider.value = audioSource.time;
 		}
 		if (timerSlider.value >= 1) {
 			//If Player can finish the map
@@ -128,7 +130,7 @@ public class GameManager : MonoBehaviour {
 			} else {
 				crown = "Silver";
 			}
-			StartCoroutine ("DelayToBonus");
+			StartCoroutine (DelayToBonus());
 		} else {
 			crown = "Missed";
 			EventManager.OnCalcResult (crown); //Calling Complete UI
@@ -149,10 +151,13 @@ public class GameManager : MonoBehaviour {
 		if (isBonusCalled) {
 			isBonusCalled = false;
 			spawnerScript.isBonusStage = true;
-            bonusSentenceSign.SetActive(true);
-            yield return new WaitForSeconds(1);
-            bonusSentenceSign.SetActive(false);
-            yield return new WaitForSeconds(1);
+            if(bonusSentenceSign != null)
+            {
+                bonusSentenceSign.SetActive(true);
+                yield return new WaitForSeconds(1);
+                bonusSentenceSign.SetActive(false);
+                yield return new WaitForSeconds(1);
+            }
             spawnerScript.SpawnBonus ();
 //			spawnerScript.crown = crown;
 		}

@@ -23,7 +23,7 @@ public class CompleteManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         levelCrown = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].levelPlayerPrefs;
-        if (PlayerPrefs.GetInt (levelCrown) != null) {
+        if (PlayerPrefs.HasKey (levelCrown)) {
 			crownInt = PlayerPrefs.GetInt (levelCrown);
 		} else {
 			crownInt = 0;

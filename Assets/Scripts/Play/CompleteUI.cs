@@ -45,7 +45,7 @@ public class CompleteUI : MonoBehaviour {
 			failPanel.SetActive (false);
 			winPanel.SetActive (true);
 			scoreText [0].text = GameManager.score.ToString ();
-			ballodyNameText.text = ballodyName;
+			ballodyNameText.text = ballodyName.ToUpper();
 			if (crown == "Bronze") {
 				crownImg.sprite = crownSprite [0];
 				coinText.text = (ResourceManager.resourceManager.bonus*1 + 50).ToString();
