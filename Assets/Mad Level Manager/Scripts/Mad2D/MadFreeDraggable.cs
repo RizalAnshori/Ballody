@@ -230,6 +230,7 @@ public class MadFreeDraggable : MadDraggable {
                 cameraPos = cachedCamPos;
                 ClampPosition();
             }
+                //Debug.Log(lastPosition);
 //				Debug.Log("Called");
 //				TestScript.instance.move ();
         }

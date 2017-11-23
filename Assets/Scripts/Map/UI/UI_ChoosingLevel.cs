@@ -13,6 +13,8 @@ namespace Ballody
 
         [SerializeField]
         GameObject chooseLevelWindow;
+        [SerializeField]
+        GameObject contentLevelWindow;
 
         [SerializeField]
         Button sumBarButton;
@@ -23,20 +25,22 @@ namespace Ballody
 
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            chooseLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { chooseLevelWindow.SetActive(true); });
+            chooseLevelWindow.SetActive(true);
+            contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true); }).SetDelay(1f);
         }
 
         public void OnExit(TransitionCause cause)
         {
-            chooseLevelWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { chooseLevelWindow.SetActive(false); });
+            chooseLevelWindow.SetActive(false);
+            contentLevelWindow.transform.DOScale(0.1f, 0.3f).OnComplete(() => { contentLevelWindow.SetActive(false); });
         }
 
         public void InitButton(Button button)
         {
-            chooseLevelWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
-            button.onClick.AddListener(() => {
-                //add function
-            });
+            contentLevelWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+            //button.onClick.AddListener(() => {
+            //    //add function
+            //});
 
             sumBarButton.onClick.AddListener(() => {
                 //add function
