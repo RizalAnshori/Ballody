@@ -20,14 +20,16 @@ public class MadLevelIconInspector : MadSpriteInspector {
 
     private const string DefaultFontGUID = "7fd3c65ab8c2c7a4cb5be2ccd1aee57c";
 
-    #endregion
+        #endregion
 
     #region Fields
-    
+
+    SerializedProperty targetObjectOnClicked;
+    SerializedProperty landMarkIndex;
     SerializedProperty unlockOnComplete;
     SerializedProperty canFocusIfLocked;
-        SerializedProperty energyNeeded;
-        SerializedProperty coinNeeded;
+    SerializedProperty energyNeeded;
+    SerializedProperty coinNeeded;
 
     private MadLevelIcon levelIcon;
 
@@ -37,7 +39,9 @@ public class MadLevelIconInspector : MadSpriteInspector {
     
     protected new void OnEnable() {
         base.OnEnable();
-        
+
+        targetObjectOnClicked = serializedObject.FindProperty("targetObjectOnClicked");
+        landMarkIndex = serializedObject.FindProperty("landMarkIndex");
         unlockOnComplete = serializedObject.FindProperty("unlockOnComplete");
         canFocusIfLocked = serializedObject.FindProperty("canFocusIfLocked");
         levelIcon = target as MadLevelIcon;
@@ -92,6 +96,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
             MadGUI.PropertyField(coinNeeded, "Coin needed to Unlock");
             MadGUI.PropertyField(energyNeeded, "Energy needed to unlock");
 
+            MadGUI.PropertyField(targetObjectOnClicked, "Show Object OnCliked","This Object that assigned in here will be shown if the MadLevelIcon is Clicked, and it's use for Tap to show Landmark");
+            MadGUI.PropertyField(landMarkIndex, "Landmark Index");
             serializedObject.ApplyModifiedProperties();
 
             if (levelIcon.generated) {
@@ -103,6 +109,7 @@ public class MadLevelIconInspector : MadSpriteInspector {
                 }
                 serializedObject.ApplyModifiedProperties();
             }
+
         });
         MadGUI.EndBox();
 

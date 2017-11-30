@@ -28,12 +28,16 @@ public class MadLevelIcon : MadSprite {
     // if true then levelSceneName and levelArguments are loaded from configuration
     public bool hasLevelConfiguration;
 
+        //Landmark Button Variable
+    public GameObject targetObjectOnClicked;
+    public int landMarkIndex;
+
     // level index in group
     public int levelIndex;
     
     public string levelSceneName;
     public string levelArguments;
-    
+
     public MadLevelProperty completedProperty;
     public MadLevelProperty lockedProperty;
     public MadText levelNumber;
@@ -339,11 +343,16 @@ public class MadLevelIcon : MadSprite {
         } else {
             if (!string.IsNullOrEmpty(levelSceneName)) {
                 MadLevelProfile.recentLevelSelected = level.name;
-            
                 MadLevel.currentLevelName = level.name;
                 MadLevel.arguments = "";
                 Application.LoadLevel(levelSceneName);
-            } else {
+            }else if(targetObjectOnClicked != null)
+                {
+                    targetObjectOnClicked.SetActive(true);
+                    this.gameObject.SetActive(false);
+                    PlayerPrefs.SetString(ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex], ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex]);
+                }
+                else {
                 Debug.LogError("Level scene name not set. I don't know what to load!");
                 return;
             }

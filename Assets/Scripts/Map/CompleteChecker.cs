@@ -36,19 +36,26 @@ public class CompleteChecker : MonoBehaviour {
 		
 	}
 
-    void CheckLandMark(string id)
+    void CheckLandMark()
     {
         for(int i = 0; i<cekPointList.Count; i++)
         {
-            if(cekPointList[i].landMarkId == id)
+            //if(cekPointList[i].landMarkId == id)
+            //{
+            //    //Unlock LandMark
+            //    cekPointList[i].landMark.SetActive(true);
+            //}
+            //else
+            //{
+            //    //LandMark Not Found
+            //    //There is nothing to do
+            //}
+            if (PlayerPrefs.HasKey(ResourceManager.resourceManager.landMarkDataBase.landMarkList[i]))
             {
-                //Unlock LandMark
+                cekPointList[i].tapIcon.guiDepth = 0;
+                //cekPointList[i].tapIcon.visible = false;
+                //cekPointList[i].tapIcon.gameObject.GetComponentInChildren<MadLevelIcon>().visible = false;
                 cekPointList[i].landMark.SetActive(true);
-            }
-            else
-            {
-                //LandMark Not Found
-                //There is nothing to do
             }
         }
     }

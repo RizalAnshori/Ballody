@@ -42,7 +42,7 @@ public class BlockBehavior : MonoBehaviour {
 		if(col.gameObject.tag == "Death Line")
         {
 			if (!spawner.isBonusStage) {
-				EventManager.OnGameOver (true);
+				//EventManager.OnGameOver (true);
 				this.gameObject.SetActive (false);
 			} else {
 				this.gameObject.SetActive (false);

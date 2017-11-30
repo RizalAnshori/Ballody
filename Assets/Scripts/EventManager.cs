@@ -12,7 +12,7 @@ public class EventManager : MonoBehaviour {
 	public delegate void CrownResult(string Crown);
 	public static event CrownResult OnCrownResultE;
 
-    public delegate void MapUnlocked(string id);
+    public delegate void MapUnlocked();
     public static event MapUnlocked OnMapUnlockedE;
 
     // Use this for initialization
@@ -52,7 +52,7 @@ public class EventManager : MonoBehaviour {
     {
         if(OnMapUnlockedE!=null)
         {
-            OnMapUnlockedE(landMarkID);
+            OnMapUnlockedE();
             Debug.Log("Complete Broadcaster Called with Id" + landMarkID);
         }
     }

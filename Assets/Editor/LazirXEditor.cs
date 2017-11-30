@@ -23,4 +23,17 @@ public class LazirXEditor : EditorWindow {
 
         Selection.activeObject = asset;
     }
+
+    [MenuItem("LazirX/Create Landmark Data")]
+    public static void CreateLandmarkData()
+    {
+        LandMarkData asset = ScriptableObject.CreateInstance<LandMarkData>();
+
+        AssetDatabase.CreateAsset(asset, "Assets/Resources/NewLandmarkData.asset");
+        AssetDatabase.SaveAssets();
+
+        EditorUtility.FocusProjectWindow();
+
+        Selection.activeObject = asset;
+    }
 }

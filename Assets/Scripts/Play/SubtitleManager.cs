@@ -23,7 +23,10 @@ public class SubtitleManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        SubtitleSetter();
+        if(subtitleData != null)
+        {
+            SubtitleSetter();
+        }
 	}
 
     void Init()
