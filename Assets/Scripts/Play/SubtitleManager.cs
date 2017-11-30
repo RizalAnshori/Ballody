@@ -36,9 +36,9 @@ public class SubtitleManager : MonoBehaviour {
     {
         if (audioSource.isPlaying)
         {
-            subtitleImage.gameObject.SetActive(true);
             if (audioSource.time >= triggerTime)
             {
+                subtitleImage.gameObject.SetActive(true);
                 if(subtitleData.subtitleDatas[index].subtitleSprite != null)
                 {
                     subtitleImage.gameObject.SetActive(true);
@@ -60,6 +60,5 @@ public class SubtitleManager : MonoBehaviour {
         {
             subtitleImage.gameObject.SetActive(false);
         }
-
     }
 }

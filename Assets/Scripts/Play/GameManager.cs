@@ -57,8 +57,9 @@ public class GameManager : MonoBehaviour {
         score = 0;
         highScore = PlayerPrefs.GetInt(playerPrefsID);
         startingTime = audioClip.length;
-        //timerSlider.maxValue = audioClip.length;
 		StartCoroutine (PlayAudio());
+        bonusSentenceSign.SetActive(false);
+        //timerSlider.maxValue = audioClip.length;
         //audioSource.PlayOneShot(audioClip);
     }
 
