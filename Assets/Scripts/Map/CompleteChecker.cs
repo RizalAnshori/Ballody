@@ -8,7 +8,6 @@ public struct CheckPoint
 {
     public MadLevelIcon tapIcon;
     public string landMarkId;
-    //public GameObject level;
     public GameObject landMark;
 }
 
@@ -40,19 +39,9 @@ public class CompleteChecker : MonoBehaviour {
     {
         for(int i = 0; i<cekPointList.Count; i++)
         {
-            //if(cekPointList[i].landMarkId == id)
-            //{
-            //    //Unlock LandMark
-            //    cekPointList[i].landMark.SetActive(true);
-            //}
-            //else
-            //{
-            //    //LandMark Not Found
-            //    //There is nothing to do
-            //}
             if (PlayerPrefs.HasKey(ResourceManager.resourceManager.landMarkDataBase.landMarkList[i]))
             {
-                cekPointList[i].tapIcon.guiDepth = 0;
+                cekPointList[i].tapIcon.guiDepth = -10;
                 //cekPointList[i].tapIcon.visible = false;
                 //cekPointList[i].tapIcon.gameObject.GetComponentInChildren<MadLevelIcon>().visible = false;
                 cekPointList[i].landMark.SetActive(true);
@@ -60,6 +49,3 @@ public class CompleteChecker : MonoBehaviour {
         }
     }
 }
-
-///Note
-//Make PlayerPrefs to save how many landmark unlocked just for in case if we always check/broadcaster failed to notify

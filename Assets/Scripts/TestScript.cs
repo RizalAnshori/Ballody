@@ -11,11 +11,22 @@ public class TestScript : MonoBehaviour {
 	public GameObject tesTransform;
 
     public Button buttonTest;
+
+    void OnBecameVisible()
+    {
+        Debug.Log("Visible");
+    }
+
+    void OnBecameInvisible()
+    {
+        Debug.Log("InVisible");
+    }
+
 	// Use this for initialization
 	void Start () {
         //instance = this;
         //      buttonTest.onClick.AddListener(() => { ClickTest(); });
-        Debug.Log("OnEnable : " + ResourceManager.resourceManager.levelDataBase.levelDatas[0].levelSpeed);
+        //Debug.Log("OnEnable : " + ResourceManager.resourceManager.levelDataBase.levelDatas[0].levelSpeed);
     }
 	
 	public void move()
@@ -34,7 +45,7 @@ public class TestScript : MonoBehaviour {
 
     void OnDisable()
     {
-        Debug.Log("OnDisable : " + ResourceManager.resourceManager.levelDataBase.levelDatas[0].levelSpeed);
+        //Debug.Log("OnDisable : " + ResourceManager.resourceManager.levelDataBase.levelDatas[0].levelSpeed);
     }
 
     void OnEnable()

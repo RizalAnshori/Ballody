@@ -337,26 +337,31 @@ public class MadLevelIcon : MadSprite {
     }
     
     public void LoadLevel() {
-        if (hasLevelConfiguration) {
-            var level = configuration.GetLevel(MadLevel.Type.Level, levelGroup, levelIndex);
-            MadLevel.LoadLevelByName(level.name);
-        } else {
-            if (!string.IsNullOrEmpty(levelSceneName)) {
-                MadLevelProfile.recentLevelSelected = level.name;
-                MadLevel.currentLevelName = level.name;
-                MadLevel.arguments = "";
-                Application.LoadLevel(levelSceneName);
-            }else if(targetObjectOnClicked != null)
+            if (hasLevelConfiguration && MapStateManager.mapState == MapState.Accessible)
+            {
+                var level = configuration.GetLevel(MadLevel.Type.Level, levelGroup, levelIndex);
+                //MadLevel.LoadLevelByName(level.name);
+                EventManager.OnLevelIconClicked(level.name);
+            }
+            else {
+                if (!string.IsNullOrEmpty(levelSceneName))
+                {
+                    MadLevelProfile.recentLevelSelected = level.name;
+                    MadLevel.currentLevelName = level.name;
+                    MadLevel.arguments = "";
+                    Application.LoadLevel(levelSceneName);
+                }
+                else if (targetObjectOnClicked != null)
                 {
                     targetObjectOnClicked.SetActive(true);
                     this.gameObject.SetActive(false);
                     PlayerPrefs.SetString(ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex], ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex]);
                 }
                 else {
-                Debug.LogError("Level scene name not set. I don't know what to load!");
-                return;
+                    Debug.LogError("Level scene name not set. I don't know what to load!");
+                    return;
+                }
             }
-        }
         
     }
     

@@ -18,6 +18,8 @@ namespace Ballody
         public UI_Diamond stateDiamond;
         public UI_Coin stateCoin;
         public UI_ChoosingLevel stateChoosingLevel;
+        public UI_PromptGoToScene stateGoToScene;
+        public UI_PromptExit stateExit;
         public UI_Idle stateIdle;
 
         [Space]
@@ -42,7 +44,14 @@ namespace Ballody
         {
             if(Input.GetKeyDown(KeyCode.Escape))
             {
-                GoToState(stateIdle);
+                if(MapStateManager.mapState == MapState.Accessible)
+                {
+                    GoToState(stateExit);
+                }
+                else
+                {
+                    GoToState(stateIdle);
+                }
             }
         }
 
@@ -59,6 +68,8 @@ namespace Ballody
             RegisterState(stateDiamond);
             RegisterState(stateCoin);
             RegisterState(stateChoosingLevel);
+            RegisterState(stateGoToScene);
+            RegisterState(stateExit);
             RegisterState(stateIdle);
 
             stateShop.parent = this;
@@ -72,6 +83,8 @@ namespace Ballody
             stateDiamond.parent = this;
             stateEnergy.parent = this;
             stateChoosingLevel.parent = this;
+            stateGoToScene.parent = this;
+            stateExit.parent = this;
             stateIdle.parent = this;
         }
 
@@ -88,6 +101,7 @@ namespace Ballody
             stateCoin.InitButton(coinButton);
             stateChoosingLevel.InitButton(null);
             stateChangeLanguage.InitButton(null);
+            stateExit.InitButton(null);
         }
     }
 }

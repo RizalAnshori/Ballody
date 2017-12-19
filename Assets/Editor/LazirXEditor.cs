@@ -36,4 +36,10 @@ public class LazirXEditor : EditorWindow {
 
         Selection.activeObject = asset;
     }
+
+    [MenuItem("LazirX/Erase PlayerPrefs")]
+    public static void ErasePlayerPrefs()
+    {
+        PlayerPrefs.DeleteAll();
+    }
 }

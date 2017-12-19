@@ -15,7 +15,11 @@ namespace Ballody
         GameObject chooseLevelWindow;
         [SerializeField]
         GameObject contentLevelWindow;
+        [SerializeField]
+        GameObject reminderLevelWindow;
 
+        [SerializeField]
+        Button closeButton;
         [SerializeField]
         Button sumBarButton;
         [SerializeField]
@@ -23,10 +27,20 @@ namespace Ballody
         [SerializeField]
         Button NTBButton;
 
+        private string playerPrefsPhrase = "choosingLevel";
+
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            chooseLevelWindow.SetActive(true);
-            contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true); }).SetDelay(1f);
+            if (PlayerPrefs.HasKey(playerPrefsPhrase))
+            {
+                parent.GoToState(parent.stateIdle);
+            }
+            else
+            {
+                chooseLevelWindow.SetActive(true);
+                contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true); }).SetDelay(1f);
+                PlayerPrefs.SetString(playerPrefsPhrase, playerPrefsPhrase);
+            }
         }
 
         public void OnExit(TransitionCause cause)
@@ -42,22 +56,35 @@ namespace Ballody
             //    //add function
             //});
 
-            sumBarButton.onClick.AddListener(() => {
+            closeButton.onClick.AddListener(() =>
+            {
+                parent.GoToState(parent.stateIdle);
+            });
+
+            sumBarButton.onClick.AddListener(() =>
+            {
                 //add function
                 //Move to map sumBar
-                parent.GoToState(parent.stateIdle);
+                reminderLevelWindow.SetActive(true);
+                contentLevelWindow.SetActive(false);
             });
 
-            yogyakartaButton.onClick.AddListener(() => {
+            yogyakartaButton.onClick.AddListener(() =>
+            {
                 //add function
                 //move to map Yogya
-                parent.GoToState(parent.stateIdle);
+                //parent.GoToState(parent.stateIdle);
+                reminderLevelWindow.SetActive(true);
+                contentLevelWindow.SetActive(false);
             });
 
-            NTBButton.onClick.AddListener(() => {
+            NTBButton.onClick.AddListener(() =>
+            {
                 //add function
                 //move to map NTB
-                parent.GoToState(parent.stateIdle);
+                //parent.GoToState(parent.stateIdle);
+                reminderLevelWindow.SetActive(true);
+                contentLevelWindow.SetActive(false);
             });
         }
     }

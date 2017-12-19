@@ -12,10 +12,12 @@ namespace Ballody
         
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
+            MapStateManager.mapState = MapState.Accessible;
         }
 
         public void OnExit(TransitionCause cause)
         {
+            MapStateManager.mapState = MapState.Unaccesible;
         }
 
         public void InitButton(Button button)

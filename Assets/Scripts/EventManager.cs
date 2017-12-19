@@ -15,15 +15,8 @@ public class EventManager : MonoBehaviour {
     public delegate void MapUnlocked();
     public static event MapUnlocked OnMapUnlockedE;
 
-    // Use this for initialization
-	void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
+    public delegate void LevelIconClicked(string levelName);
+    public static event LevelIconClicked OnLevelIconClickedE;
 
 	public static void OnGameOver(bool isMiss)
     {
@@ -54,6 +47,14 @@ public class EventManager : MonoBehaviour {
         {
             OnMapUnlockedE();
             Debug.Log("Complete Broadcaster Called with Id" + landMarkID);
+        }
+    }
+    
+    public static void OnLevelIconClicked(string levelName)
+    {
+        if(OnLevelIconClickedE!=null)
+        {
+            OnLevelIconClickedE(levelName);
         }
     }
 }
