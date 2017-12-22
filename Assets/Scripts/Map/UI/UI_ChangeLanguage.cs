@@ -23,7 +23,7 @@ namespace Ballody
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
             settingWindow.SetActive(true);
-            changeLanguageWindow.transform.DOScale(1, 0.3f).OnPlay(() => { changeLanguageWindow.SetActive(true); });
+            changeLanguageWindow.transform.DOScale(1, 0.3f).OnPlay(() => { changeLanguageWindow.SetActive(true); parent.PlaySFX(); });
             //changeLanguageWindow.SetActive(true);
         }
 

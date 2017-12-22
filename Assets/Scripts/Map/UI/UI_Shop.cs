@@ -15,7 +15,13 @@ namespace Ballody
         
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            shopWindow.transform.DOScale(1, 0.3f).OnPlay(() => { shopWindow.SetActive(true); });
+            
+            shopWindow.transform.DOScale(1, 0.3f)
+                .OnPlay(() => 
+            {
+                shopWindow.SetActive(true);
+                parent.PlaySFX();
+            });
             //shopWindow.SetActive(true);
         }
 

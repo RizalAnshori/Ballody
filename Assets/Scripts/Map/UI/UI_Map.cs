@@ -15,7 +15,7 @@ namespace Ballody
         
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            mapsWindow.transform.DOScale(1, 0.3f).OnPlay(() => { mapsWindow.SetActive(true); });
+            mapsWindow.transform.DOScale(1, 0.3f).OnPlay(() => { mapsWindow.SetActive(true); parent.PlaySFX(); });
             mapsWindow.SetActive(true);
         }
 

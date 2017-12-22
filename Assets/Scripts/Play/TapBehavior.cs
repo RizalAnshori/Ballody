@@ -9,16 +9,6 @@ public class TapBehavior : MonoBehaviour {
 	public Spawner spawnerScript;
     public ParticleSystem[] particleSystemObj;
 
-    // Use this for initialization
-    void Start () {
-	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
-
     void OnEnable()
     {
         GameController.OnTap += Activate;
@@ -68,6 +58,7 @@ public class TapBehavior : MonoBehaviour {
         {
             particleSystemObj[3].Play();
         }
+        PlayAudio();
         //particleSystem.startColor = new Color(0,0,0,255);
     }
 
@@ -75,6 +66,18 @@ public class TapBehavior : MonoBehaviour {
     {
         isActivated = false;
         //Debug.Log("Release : "+ GameObjectId);
+    }
+
+    void PlayAudio()
+    {
+        if (spawnerScript.isBonusStage)
+        {
+            GM.audioSource.PlayOneShot(ResourceManager.resourceManager.levelDataBase.bonusTapSound);
+        }
+        else
+        {
+            GM.audioSource.PlayOneShot(ResourceManager.resourceManager.levelDataBase.normalTapSound);
+        }
     }
 
     void OnTriggerStay2D(Collider2D col)

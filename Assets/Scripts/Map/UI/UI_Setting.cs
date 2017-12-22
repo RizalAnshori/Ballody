@@ -24,7 +24,7 @@ namespace Ballody
 
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            settingWindow.transform.DOScale(1, 0.3f).OnPlay(() => { settingWindow.SetActive(true); });
+            settingWindow.transform.DOScale(1, 0.3f).OnPlay(() => { settingWindow.SetActive(true); parent.PlaySFX(); });
         }
 
         public void OnExit(TransitionCause cause)

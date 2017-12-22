@@ -32,7 +32,10 @@ public class SubtitleManager : MonoBehaviour {
     void Init()
     {
         subtitleData = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].subtitle;
-        triggerTime = subtitleData.subtitleDatas[0].triggerTime;
+        if(subtitleData!=null)
+        {
+            triggerTime = subtitleData.subtitleDatas[0].triggerTime;
+        }
     }
 
     void SubtitleSetter()

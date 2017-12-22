@@ -7,6 +7,9 @@ namespace Ballody
 {
     public class UIManager : BFSMSystem
     {
+        [SerializeField] AudioClip clickMenuSfx;
+        [SerializeField] AudioSource audioSource;
+
         public UI_Shop stateShop;
         public UI_HallOfFame stateHallOfFame;
         public UI_Collection stateCollection;
@@ -102,6 +105,11 @@ namespace Ballody
             stateChoosingLevel.InitButton(null);
             stateChangeLanguage.InitButton(null);
             stateExit.InitButton(null);
+        }
+
+        public void PlaySFX()
+        {
+            audioSource.PlayOneShot(clickMenuSfx);
         }
     }
 }

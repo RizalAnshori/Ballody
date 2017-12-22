@@ -15,7 +15,12 @@ namespace Ballody
         
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            hallOfFameWindow.transform.DOScale(1, 0.3f).OnPlay(() => { hallOfFameWindow.SetActive(true); });
+            hallOfFameWindow.transform.DOScale(1, 0.3f)
+                .OnPlay(() => 
+                {
+                    hallOfFameWindow.SetActive(true);
+                    parent.PlaySFX();
+                });
             //hallOfFameWindow.SetActive(true);
         }
 

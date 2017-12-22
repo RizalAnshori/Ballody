@@ -379,19 +379,19 @@ public class MadSprite : MadNode {
     void OnDisable() {
         // disable is called on script reload
         UnregisterSprite(panel);
-            Debug.Log("Disable Called");
+            //Debug.Log("Disable Called");
     }
     
     protected virtual void Start() {
         // start is called on scene/script load
         RegisterSprite();
-            Debug.Log("Start Called");
+            //Debug.Log("Start Called");
         }
     
     void OnDestroy() {
         // destroy can be called without disable
         UnregisterSprite(panel);
-            Debug.Log("Destroy Called");
+            //Debug.Log("Destroy Called");
         }
 
     void RegisterSpriteIfNeeded() {

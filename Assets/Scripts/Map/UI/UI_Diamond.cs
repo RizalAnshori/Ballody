@@ -15,7 +15,7 @@ namespace Ballody
 
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            diamondWindow.transform.DOScale(1, 0.3f).OnPlay(() => { diamondWindow.SetActive(true); });
+            diamondWindow.transform.DOScale(1, 0.3f).OnPlay(() => { diamondWindow.SetActive(true); parent.PlaySFX(); });
             //diamondWindow.SetActive(true);
         }
 

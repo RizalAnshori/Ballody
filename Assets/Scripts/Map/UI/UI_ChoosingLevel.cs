@@ -38,7 +38,7 @@ namespace Ballody
             else
             {
                 chooseLevelWindow.SetActive(true);
-                contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true); }).SetDelay(1f);
+                contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true);}).SetDelay(1f);
                 PlayerPrefs.SetString(playerPrefsPhrase, playerPrefsPhrase);
             }
         }

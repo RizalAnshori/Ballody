@@ -6,6 +6,7 @@ using MadLevelManager;
 public class CompleteUI : MonoBehaviour {
 
 	string ballodyName;
+    AudioSource audioSource;
 	public GameObject completeCanvas;
 	public GameObject winPanel;
 	public GameObject failPanel;
@@ -30,6 +31,7 @@ public class CompleteUI : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         ballodyName = ResourceManager.resourceManager.levelDataBase.levelDatas[GetComponent<GameManager>().dataIndex].ballodyName;
+        audioSource = GetComponent<AudioSource>();
         completeCanvas.SetActive (false);
 	}
 	
@@ -37,11 +39,15 @@ public class CompleteUI : MonoBehaviour {
 	{
 		completeCanvas.SetActive (true);
 		if(crown == "Missed"){
-			failPanel.SetActive (true);
+            audioSource.clip = ResourceManager.resourceManager.levelDataBase.failBgm;
+            audioSource.Play();
+            failPanel.SetActive (true);
 			winPanel.SetActive (false);
 			scoreText [1].text = GameManager.score.ToString ();
 		}
 		else if (crown != "Miss") {
+            audioSource.clip = ResourceManager.resourceManager.levelDataBase.successBgm;
+            audioSource.Play();
 			failPanel.SetActive (false);
 			winPanel.SetActive (true);
 			scoreText [0].text = GameManager.score.ToString ();

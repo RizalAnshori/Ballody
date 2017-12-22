@@ -68,5 +68,14 @@ public class LevelSetting : ScriptableObject {
     public Sprite bonusSprite;
 
     [SerializeField]
+    public AudioClip normalTapSound;
+    [SerializeField]
+    public AudioClip bonusTapSound;
+    [SerializeField]
+    public AudioClip successBgm;
+    [SerializeField]
+    public AudioClip failBgm;
+
+    [SerializeField]
     public List<LevelData> levelDatas = new List<LevelData>();
 }

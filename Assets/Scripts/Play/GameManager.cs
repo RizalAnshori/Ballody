@@ -117,7 +117,7 @@ public class GameManager : MonoBehaviour {
 	void OnGameOver(bool isMissed)
     {
 		CheckRank (isMissed);
-		audioSource.Stop ();
+		//audioSource.Stop ();
     }
 
 	void CheckRank(bool isMiss)

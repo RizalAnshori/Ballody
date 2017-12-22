@@ -30,11 +30,6 @@ public class CompleteManager : MonoBehaviour {
 		}
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
 	void OnCalcResultE(string crown)
     {
 		if (crown == "Bronze") {
