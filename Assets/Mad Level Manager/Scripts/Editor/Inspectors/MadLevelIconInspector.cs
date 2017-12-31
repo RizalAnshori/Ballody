@@ -25,6 +25,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
     #region Fields
 
     SerializedProperty targetObjectOnClicked;
+    SerializedProperty audioSource;
+    SerializedProperty sfx;
     SerializedProperty landMarkIndex;
     SerializedProperty unlockOnComplete;
     SerializedProperty canFocusIfLocked;
@@ -41,6 +43,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
         base.OnEnable();
 
         targetObjectOnClicked = serializedObject.FindProperty("targetObjectOnClicked");
+        audioSource = serializedObject.FindProperty("audioSource");
+        sfx = serializedObject.FindProperty("sfx");
         landMarkIndex = serializedObject.FindProperty("landMarkIndex");
         unlockOnComplete = serializedObject.FindProperty("unlockOnComplete");
         canFocusIfLocked = serializedObject.FindProperty("canFocusIfLocked");
@@ -97,6 +101,8 @@ public class MadLevelIconInspector : MadSpriteInspector {
             MadGUI.PropertyField(energyNeeded, "Energy needed to unlock");
 
             MadGUI.PropertyField(targetObjectOnClicked, "Show Object OnCliked","This Object that assigned in here will be shown if the MadLevelIcon is Clicked, and it's use for Tap to show Landmark");
+            MadGUI.PropertyField(audioSource, "Audio Source");
+            MadGUI.PropertyField(sfx, "On Clicked Sfx");
             MadGUI.PropertyField(landMarkIndex, "Landmark Index");
             serializedObject.ApplyModifiedProperties();
 

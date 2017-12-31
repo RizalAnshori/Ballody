@@ -11,18 +11,18 @@ public class PauseScript : MonoBehaviour {
     [SerializeField] Button quitButton;
     [SerializeField] GameObject pauseWindow;
 
+    AudioSource audioSource;
+
 	// Use this for initialization
 	void Start () {
         Init();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
-	}
 
     void Init()
     {
+        audioSource = FindObjectOfType<AudioSource>();
         Time.timeScale = 1;
         pauseButton.onClick.AddListener(() => { Pause(); });
         resumeButton.onClick.AddListener(() => { StartCoroutine(Resume()); });
@@ -35,6 +35,7 @@ public class PauseScript : MonoBehaviour {
     {
         Debug.Log("Pause Called");
         pauseWindow.SetActive(true);
+        audioSource.Pause();
         Time.timeScale = 0;
     }
 
@@ -43,6 +44,7 @@ public class PauseScript : MonoBehaviour {
         pauseWindow.SetActive(false);
         yield return new WaitForSecondsRealtime(2);
         Time.timeScale = 1;
+        audioSource.UnPause();
     }
 
     void Restart()

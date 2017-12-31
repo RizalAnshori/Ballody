@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        ResourceManager.resourceManager.blockHit = 20;
         audioClip = ResourceManager.resourceManager.levelDataBase.levelDatas[dataIndex].levelAudio;
         playerPrefsID = ResourceManager.resourceManager.levelDataBase.levelDatas[dataIndex].levelPlayerPrefs;
         score = 0;

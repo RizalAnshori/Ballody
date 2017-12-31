@@ -31,6 +31,8 @@ public class MadLevelIcon : MadSprite {
         //Landmark Button Variable
     public GameObject targetObjectOnClicked;
     public int landMarkIndex;
+    public AudioClip sfx;
+    public AudioSource audioSource;
 
     // level index in group
     public int levelIndex;
@@ -354,6 +356,7 @@ public class MadLevelIcon : MadSprite {
                 else if (targetObjectOnClicked != null)
                 {
                     targetObjectOnClicked.SetActive(true);
+                    audioSource.PlayOneShot(sfx);
                     this.gameObject.SetActive(false);
                     PlayerPrefs.SetString(ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex], ResourceManager.resourceManager.landMarkDataBase.landMarkList[landMarkIndex]);
                 }
