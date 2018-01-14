@@ -9,10 +9,16 @@ namespace Ballody
     {
         [HideInInspector]
         public UIManager parent;
-        
+
+
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
+
             MapStateManager.mapState = MapState.Accessible;
+            if(!PlayerPrefs.HasKey(parent.choosingLevelPlayerPrefsPhrase))
+            {
+                parent.GoToState(parent.stateChoosingLevel);
+            }
         }
 
         public void OnExit(TransitionCause cause)

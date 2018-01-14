@@ -35,7 +35,7 @@ namespace Ballody
                 }
                 else
                 {
-                    parent.GoToState(parent.stateCollection);
+                    parent.GoToState(parent.stateUnlockNewProvince);
                 }
             });
         }

@@ -8,7 +8,7 @@ namespace Ballody
     public class UIManager : BFSMSystem
     {
         [SerializeField] AudioClip clickMenuSfx;
-        [SerializeField] AudioSource audioSource;
+        public AudioSource audioSource;
 
         public UI_Shop stateShop;
         public UI_HallOfFame stateHallOfFame;
@@ -24,6 +24,7 @@ namespace Ballody
         public UI_PromptGoToScene stateGoToScene;
         public UI_PromptExit stateExit;
         public UI_Idle stateIdle;
+        public UI_UnlockNewProvince stateUnlockNewProvince;
 
         [Space]
         public Button shopButton;
@@ -36,11 +37,14 @@ namespace Ballody
         public Button diamondButton;
         public Button coinButton;
 
+        [HideInInspector]
+        public string choosingLevelPlayerPrefsPhrase = "choosingLevel";
+
         void Start()
         {
             InitializeStates();
             InitializeButton();
-            GoToState(stateChoosingLevel);
+            GoToState(stateIdle);
         }
         
         void Update()
@@ -74,6 +78,7 @@ namespace Ballody
             RegisterState(stateGoToScene);
             RegisterState(stateExit);
             RegisterState(stateIdle);
+            RegisterState(stateUnlockNewProvince);
 
             stateShop.parent = this;
             stateCollection.parent = this;
@@ -89,6 +94,7 @@ namespace Ballody
             stateGoToScene.parent = this;
             stateExit.parent = this;
             stateIdle.parent = this;
+            stateUnlockNewProvince.parent = this;
         }
 
         void InitializeButton()

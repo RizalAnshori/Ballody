@@ -38,29 +38,32 @@ namespace Ballody
             changeLanguageWindow.transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
             englishBtn.onClick.AddListener(() => {
                 //add function
-                OnButtonClicked(englishBtn.name);
-            });
-
-            indonesiaBtn.onClick.AddListener(() => {
-                //add function
-                OnButtonClicked(indonesiaBtn.name);
-            });
-
-            javaneseBtn.onClick.AddListener(() => {
-                //add function
-                OnButtonClicked(javaneseBtn.name);
+                OnButtonClicked(0);
             });
 
             balineseBtn.onClick.AddListener(() => {
                 //add function
-                OnButtonClicked(balineseBtn.name);
+                OnButtonClicked(1);
             });
+
+            indonesiaBtn.onClick.AddListener(() => {
+                //add function
+                OnButtonClicked(2);
+            });
+
+            javaneseBtn.onClick.AddListener(() => {
+                //add function
+                OnButtonClicked(3);
+            });
+
         }
 
-        void OnButtonClicked(string name)
+        void OnButtonClicked(int id)
         {
             Debug.Log("Change Button");
+            parent.stateSetting.ChangeBackground(id);
             parent.GoToState(parent.stateSetting);
+
         }
     }
 }

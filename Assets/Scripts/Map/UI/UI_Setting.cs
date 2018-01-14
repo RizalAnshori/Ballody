@@ -12,6 +12,7 @@ namespace Ballody
         public UIManager parent;
 
         public GameObject settingWindow;
+        public Image settingBackground;
         public Sprite imageOn;
         public Sprite imageOff;
 
@@ -22,6 +23,8 @@ namespace Ballody
         public Button loginFBButton;
         public Button creditButton;
 
+        [SerializeField]Sprite[] settingSprite;
+        
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
             settingWindow.transform.DOScale(1, 0.3f).OnPlay(() => { settingWindow.SetActive(true); parent.PlaySFX(); });
@@ -71,6 +74,18 @@ namespace Ballody
             });
         }
 
+        public void ChangeBackground(int id)
+        {
+            if(id < settingSprite.Length)
+            {
+                settingBackground.sprite = settingSprite[id];
+            }
+            else
+            {
+                settingBackground.sprite = settingSprite[0];
+            }
+        }
+
         void ChangeToggleImage(bool isOn, Image image)
         {
             if(isOn)
@@ -87,11 +102,11 @@ namespace Ballody
         {
             if(isOn)
             {
-
+                parent.audioSource.mute = false;
             }
             else
             {
-
+                parent.audioSource.mute = true;
             }
         }
 
@@ -114,7 +129,7 @@ namespace Ballody
 
         void Credit()
         {
-
+            parent.GoToState(parent.stateChoosingLevel);
         }
     }
 }

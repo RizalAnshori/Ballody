@@ -27,20 +27,12 @@ namespace Ballody
         [SerializeField]
         Button NTBButton;
 
-        private string playerPrefsPhrase = "choosingLevel";
 
         public void OnEnter(IBFSMState previous, object customData, TransitionCause cause)
         {
-            if (PlayerPrefs.HasKey(playerPrefsPhrase))
-            {
-                parent.GoToState(parent.stateIdle);
-            }
-            else
-            {
-                chooseLevelWindow.SetActive(true);
-                contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true);}).SetDelay(1f);
-                PlayerPrefs.SetString(playerPrefsPhrase, playerPrefsPhrase);
-            }
+            PlayerPrefs.SetString(parent.choosingLevelPlayerPrefsPhrase, parent.choosingLevelPlayerPrefsPhrase);
+            chooseLevelWindow.SetActive(true);
+            contentLevelWindow.transform.DOScale(1, 0.3f).OnPlay(() => { contentLevelWindow.SetActive(true);}).SetDelay(1f);
         }
 
         public void OnExit(TransitionCause cause)
@@ -58,6 +50,7 @@ namespace Ballody
 
             closeButton.onClick.AddListener(() =>
             {
+                reminderLevelWindow.SetActive(false);
                 parent.GoToState(parent.stateIdle);
             });
 
